@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
                 add<QuizFragment>(R.id.fragmentHolder)
+                addToBackStack(null)
             }
         }
     }

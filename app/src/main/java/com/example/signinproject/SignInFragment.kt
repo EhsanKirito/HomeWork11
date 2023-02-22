@@ -19,9 +19,10 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
         binding?.editTextTextPersonName?.setText(userPass?.get(0) ?: "")
         binding?.editTextNumberPassword?.setText(userPass?.get(1) ?: "")
         binding?.btnSignIn?.setOnClickListener {
-            if (userPass != null){
+            if (userPass != null) {
                 if (userPass[1] == binding?.editTextNumberPassword?.text.toString() &&
-                    userPass[0] == binding?.editTextTextPersonName?.text.toString()){
+                    userPass[0] == binding?.editTextTextPersonName?.text.toString()
+                ) {
                     Toast.makeText(context, "sign in successful", Toast.LENGTH_SHORT).show()
                 }
             } else {
@@ -29,20 +30,22 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
             }
         }
         binding?.btnSignUp?.setOnClickListener {
-
-
             parentFragmentManager.commit {
-                val b = bundleOf("INFO" to arrayListOf<String>
-                    (binding.editTextTextPersonName.text.toString(), binding.editTextNumberPassword.text.toString()))
+                val b = bundleOf(
+                    "INFO" to arrayListOf
+                        (
+                        binding.editTextTextPersonName.text.toString(),
+                        binding.editTextNumberPassword.text.toString()
+                    )
+                )
                 setReorderingAllowed(true)
-                replace<SignUpFragment>(R.id.boxFragment,
-                args = b
+                addToBackStack(null)
+                replace<SignUpFragment>(
+                    R.id.boxFragment,
+                    args = b
                 )
             }
         }
-
         super.onViewCreated(view, savedInstanceState)
     }
-
-
 }

@@ -30,12 +30,20 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
                 myVM.usernames = binding.editTextTextPersonName.text.toString()
                 myVM.passwords = (binding.editTextNumberPassword.text.toString())
                 if (myVM.usernames.contains(binding.editTextTextPersonName.text.toString())
-                    && myVM.passwords.contains(binding.editTextNumberPassword.text.toString())) {
+                    && myVM.passwords.contains(binding.editTextNumberPassword.text.toString())
+                ) {
                     Toast.makeText(context, "signup successful", Toast.LENGTH_SHORT).show()
                     parentFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<SignInFragment>(R.id.boxFragment,
-                        args = bundleOf("REGISTER_INFO" to arrayListOf(myVM.usernames, myVM.passwords)))
+                        replace<SignInFragment>(
+                            R.id.boxFragment,
+                            args = bundleOf(
+                                "REGISTER_INFO" to arrayListOf(
+                                    myVM.usernames,
+                                    myVM.passwords
+                                )
+                            )
+                        )
                     }
                 } else {
                     Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show()

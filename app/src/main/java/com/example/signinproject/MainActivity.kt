@@ -9,14 +9,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<SignInFragment>(
-                R.id.boxFragment,
-                tag = "tag_MainActivity_SignInFragment"
-            )
+        if (savedInstanceState == null){
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<SignInFragment>(
+                    R.id.boxFragment,
+                    tag = "tag_MainActivity_SignInFragment"
+                )
+            }
         }
+
+
 
     }
 }
